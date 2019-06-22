@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>120</x>
+      <y>150</y>
+      <w>130</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>고객 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>130</x>
+      <y>200</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+고객 순번 앱</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>400</x>
+      <y>370</y>
+      <w>350</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;execution environment&gt;&gt;
+은행
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>410</x>
+      <y>160</y>
+      <w>250</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;execution environment&gt;&gt;
+AWS/IBM/GOOGLE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>200</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>420</x>
+      <y>430</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>은행 창구</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>590</x>
+      <y>430</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>은행 순번</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>420</x>
+      <y>500</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>스마트 글래스</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
