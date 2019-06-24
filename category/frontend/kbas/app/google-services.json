@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "242595188092",
+    "firebase_url": "https://kbas-e408b.firebaseio.com",
+    "project_id": "kbas-e408b",
+    "storage_bucket": "kbas-e408b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242595188092:android:0e04ad76621e7d2c",
+        "android_client_info": {
+          "package_name": "com.kbas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242595188092-s2sbeui2928cl4hboj7jb9maah10nfan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXfA5iCC1okHbn7WGrwWU7HvoomawpJ50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242595188092-s2sbeui2928cl4hboj7jb9maah10nfan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
