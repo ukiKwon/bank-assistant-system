@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>4</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>180</y>
-      <w>12</w>
-      <h>28</h>
+      <x>513</x>
+      <y>72</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>632</x>
-      <y>176</y>
-      <w>8</w>
-      <h>8</h>
+      <x>513</x>
+      <y>63</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>544</x>
-      <y>164</y>
-      <w>176</w>
-      <h>388</h>
+      <x>315</x>
+      <y>36</y>
+      <w>396</w>
+      <h>873</h>
     </coordinates>
     <panel_attributes>안드로이드_방문데이터수집
 valign=top</panel_attributes>
@@ -38,10 +38,10 @@ valign=top</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>440</x>
-      <y>400</y>
-      <w>40</w>
-      <h>16</h>
+      <x>81</x>
+      <y>567</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>창구 알림
 bg=yellow
@@ -51,10 +51,10 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>564</x>
-      <y>232</y>
-      <w>48</w>
-      <h>16</h>
+      <x>360</x>
+      <y>189</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>창구 알림 수신
 bg=yellow
@@ -64,10 +64,10 @@ type=receiver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>244</y>
-      <w>28</w>
-      <h>40</h>
+      <x>423</x>
+      <y>216</y>
+      <w>63</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;80.0;50.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
@@ -75,10 +75,10 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>616</x>
-      <y>200</y>
-      <w>40</w>
-      <h>16</h>
+      <x>477</x>
+      <y>117</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>kbas 서버 연결
 bg=red</panel_attributes>
@@ -87,10 +87,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>212</y>
-      <w>12</w>
-      <h>28</h>
+      <x>513</x>
+      <y>144</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -98,10 +98,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>628</x>
-      <y>232</y>
-      <w>16</w>
-      <h>16</h>
+      <x>504</x>
+      <y>189</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -110,10 +110,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>244</y>
-      <w>48</w>
-      <h>40</h>
+      <x>513</x>
+      <y>216</y>
+      <w>108</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [서버 연결 성공]</panel_attributes>
@@ -122,10 +122,10 @@ type=decision</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>604</x>
-      <y>272</y>
-      <w>40</w>
-      <h>8</h>
+      <x>450</x>
+      <y>279</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>{joinSpec=
 date is on or 
@@ -137,10 +137,10 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>592</x>
-      <y>292</y>
-      <w>68</w>
-      <h>16</h>
+      <x>423</x>
+      <y>324</y>
+      <w>153</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>다음 고객 출력 및 대기
 bg=red</panel_attributes>
@@ -149,10 +149,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>272</y>
-      <w>12</w>
-      <h>28</h>
+      <x>495</x>
+      <y>279</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -160,10 +160,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>304</y>
-      <w>12</w>
-      <h>24</h>
+      <x>495</x>
+      <y>351</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -171,10 +171,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>620</x>
-      <y>320</y>
-      <w>16</w>
-      <h>16</h>
+      <x>486</x>
+      <y>387</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -183,10 +183,10 @@ type=decision</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>596</x>
-      <y>352</y>
-      <w>68</w>
-      <h>16</h>
+      <x>432</x>
+      <y>459</y>
+      <w>153</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>고객 확인(화면 Tab)
 bg=blue</panel_attributes>
@@ -195,10 +195,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>332</y>
-      <w>48</w>
-      <h>28</h>
+      <x>495</x>
+      <y>414</y>
+      <w>108</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>[창구 고객 확인]
 lt=&lt;-</panel_attributes>
@@ -207,10 +207,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>364</y>
-      <w>12</w>
-      <h>24</h>
+      <x>495</x>
+      <y>486</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -218,10 +218,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>620</x>
-      <y>380</y>
-      <w>16</w>
-      <h>16</h>
+      <x>486</x>
+      <y>522</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=green
 type=decision</panel_attributes>
@@ -230,10 +230,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>392</y>
-      <w>76</w>
-      <h>28</h>
+      <x>495</x>
+      <y>549</y>
+      <w>171</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [생체 정보 활용 동의 확인]</panel_attributes>
@@ -242,10 +242,10 @@ type=decision</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>600</x>
-      <y>412</y>
-      <w>56</w>
-      <h>16</h>
+      <x>441</x>
+      <y>594</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>영상 및 음성 수집
 bg=red</panel_attributes>
@@ -254,10 +254,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>424</y>
-      <w>12</w>
-      <h>28</h>
+      <x>495</x>
+      <y>621</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -265,10 +265,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>608</x>
-      <y>440</y>
-      <w>40</w>
-      <h>8</h>
+      <x>459</x>
+      <y>657</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>{joinSpec=
 date is on or 
@@ -280,10 +280,10 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
-      <y>440</y>
-      <w>12</w>
-      <h>28</h>
+      <x>468</x>
+      <y>657</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -291,10 +291,10 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>576</x>
-      <y>460</y>
-      <w>56</w>
-      <h>16</h>
+      <x>387</x>
+      <y>702</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>얼굴 특성 정보 추출
 bg=red</panel_attributes>
@@ -303,10 +303,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
-      <y>472</y>
-      <w>12</w>
-      <h>24</h>
+      <x>468</x>
+      <y>729</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -314,10 +314,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>640</x>
-      <y>460</y>
-      <w>56</w>
-      <h>16</h>
+      <x>531</x>
+      <y>702</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>음성 정보 단위 추출
 bg=red</panel_attributes>
@@ -326,10 +326,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>440</y>
-      <w>32</w>
-      <h>28</h>
+      <x>513</x>
+      <y>657</y>
+      <w>72</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>60.0;50.0;60.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
@@ -337,10 +337,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>616</x>
-      <y>516</y>
-      <w>40</w>
-      <h>8</h>
+      <x>477</x>
+      <y>828</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>{joinSpec=
 date is on or 
@@ -352,10 +352,10 @@ is passed}</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>584</x>
-      <y>488</y>
-      <w>40</w>
-      <h>16</h>
+      <x>405</x>
+      <y>765</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>&lt;&lt;json&gt;&gt;</panel_attributes>
     <additional_attributes/>
@@ -363,10 +363,10 @@ is passed}</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>652</x>
-      <y>488</y>
-      <w>40</w>
-      <h>16</h>
+      <x>558</x>
+      <y>765</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>&lt;&lt;txt&gt;&gt;</panel_attributes>
     <additional_attributes/>
@@ -374,10 +374,10 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>652</x>
-      <y>472</y>
-      <w>12</w>
-      <h>24</h>
+      <x>558</x>
+      <y>729</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -385,10 +385,10 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
-      <y>500</y>
-      <w>24</w>
-      <h>28</h>
+      <x>468</x>
+      <y>792</y>
+      <w>54</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>40.0;50.0;40.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
@@ -396,10 +396,10 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
-      <y>500</y>
-      <w>28</w>
-      <h>28</h>
+      <x>522</x>
+      <y>792</y>
+      <w>63</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;30.0;50.0;30.0;50.0;10.0</additional_attributes>
@@ -407,10 +407,10 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>628</x>
-      <y>516</y>
-      <w>12</w>
-      <h>24</h>
+      <x>504</x>
+      <y>828</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -418,10 +418,10 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>604</x>
-      <y>532</y>
-      <w>56</w>
-      <h>16</h>
+      <x>450</x>
+      <y>864</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>방문데이터 전송
 bg=red</panel_attributes>
@@ -430,10 +430,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>408</x>
-      <y>168</y>
-      <w>124</w>
-      <h>260</h>
+      <x>9</x>
+      <y>45</y>
+      <w>279</w>
+      <h>585</h>
     </coordinates>
     <panel_attributes>순번 시스템
 valign=top</panel_attributes>
@@ -442,10 +442,10 @@ valign=top</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>740</x>
-      <y>164</y>
-      <w>176</w>
-      <h>388</h>
+      <x>756</x>
+      <y>36</y>
+      <w>396</w>
+      <h>873</h>
     </coordinates>
     <panel_attributes>서버_방문데이터 수신
 valign=top</panel_attributes>
@@ -454,10 +454,10 @@ valign=top</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>540</x>
-      <y>572</y>
-      <w>176</w>
-      <h>388</h>
+      <x>306</x>
+      <y>954</y>
+      <w>396</w>
+      <h>873</h>
     </coordinates>
     <panel_attributes>안드로이드_스마트글래스
 valign=top</panel_attributes>
