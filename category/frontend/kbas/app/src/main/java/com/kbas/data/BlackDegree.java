@@ -13,11 +13,11 @@ import java.io.Serializable;
 
 public class BlackDegree extends BaseModel {
     public enum STATE {
-        WHITE(R.drawable.WHITE),
-        WHITE2GRAY(R.drawable.WHITE2GRAY),
-        GRAY(R.drawable.GRAY),
-        GRAY2BLACK(R.drawable.GRAY2BLACK),
-        BLACK(R.drawable.BLACK);
+        WHITE(R.drawable.white),
+        WHITE2GRAY(R.drawable.white2gray),
+        GRAY(R.drawable.gray),
+        GRAY2BLACK(R.drawable.gray2black),
+        BLACK(R.drawable.black);
         int state;
         STATE(int stateImage) {
             this.state = state;
