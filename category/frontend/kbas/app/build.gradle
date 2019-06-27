@@ -30,5 +30,7 @@ dependencies {
     //Firebase-ML kit
     implementation 'com.google.firebase:firebase-ml-vision:21.0.0'
     implementation 'com.google.firebase:firebase-ml-vision-face-model:18.0.0'
+    //intro-lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
 apply plugin: 'com.google.gms.google-services'
