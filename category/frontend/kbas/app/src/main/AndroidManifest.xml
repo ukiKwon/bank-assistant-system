@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kbas">
-    <uses-permission android:name="android.permission.INTERNET"/>
-     <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,9 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity android:name=".MainActivity">
-         </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RecordMediaActivity" />
 
+        <service
+            android:name=".ServerConService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

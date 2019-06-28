@@ -33,4 +33,9 @@ class VoiceInfo extends BaseModel{
         }
         return theVoice;
     }
+    public void describes() {
+        System.out.println("\n######### VOICE_INFO #########");
+        for (int i = 0; i < voiceUnits.size(); ++i)
+            voiceUnits.get(i).describes();
+    }
 }

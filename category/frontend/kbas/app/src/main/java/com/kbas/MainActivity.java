@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -37,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
     private final String[] ERROR_STATE ={"10001", "10002"};
+
     //mainactivity-variables
     private final String TAG = "MainActivity";
+    private final String DELIMETER = ":";
     private boolean CUSTOM_STATE = false;
+    private VisitedData mVisitedData;
     //mainView
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
@@ -66,12 +71,15 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_MOVE :
                     case MotionEvent.ACTION_UP   :
                         //camera 이벤트 넘어가기
-                        if (CUSTOM_STATE) {
-                            G
-                            Intent server_return = new Intent(MainActivity.this, CameraActivity.class);
-                            startActivity(server_return);
+                        if (CUSTOM_STATE && mVisitedData != null) {
+                            //Gson gson = new GsonBuilder().create();
+                            Gson gson = new Gson();
+                            String data = gson.toJson(mVisitedData);
+                            System.out.println("gson_string : " + data);
+                            Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
+                            intent.putExtra("vdata", data);
+                            startActivity(intent);
                         }
-
                 }
                 return true;
             }
@@ -148,7 +156,13 @@ public class MainActivity extends AppCompatActivity {
             CUSTOM_STATE = checkException(result);
             //If the server is on
             setLottieView();
-            setTextView(result, CUSTOM_STATE);
+            setTextView(result);
+            if (CUSTOM_STATE) {
+                String[] res = result.split(DELIMETER);
+                if (res.length >= 2) {
+                    mVisitedData = new VisitedData(res[0], res[1]);
+                }
+            }
         }
     }
     public void setLottieView() {

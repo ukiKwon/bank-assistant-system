@@ -2,6 +2,7 @@ package com.kbas;
 
 class FaceInfo extends BaseModel{
     private final int EMO_NUM = 8;
+    //todo : 순서 있을듯
     private float[] emotionsChange = new float[EMO_NUM];//emotions
     private int mouthOpenCount;//how many tallk
     private int eyeBlicnkCount;//how many eyes will blink
@@ -42,5 +43,13 @@ class FaceInfo extends BaseModel{
     public void updateEmotions(float[] newEmotions) {
         for (int i = 0; i < EMO_NUM; ++i)
             emotionsChange[i] = (emotionsChange[i] + newEmotions[i])/2;
+    }
+    public void describes() {
+        System.out.println("mouthOpenCount" + mouthOpenCount);
+        System.out.println("eyeBlicnkCount" + eyeBlicnkCount);
+        System.out.println("HeadLocCount" + HeadLocCount);
+        for (int i = 0; i < EMO_NUM; ++i) {
+            System.out.println("emotionsChange" + emotionsChange[i]);
+        }
     }
 }

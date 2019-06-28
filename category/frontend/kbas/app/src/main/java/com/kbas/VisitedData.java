@@ -58,4 +58,14 @@ public class VisitedData extends BaseModel {
     public long getOnServiceTime() {
         return onServiceTime;
     }
+    public void describes() {
+        System.out.println("custom_id" + custom_id);
+        System.out.println("custom_name" + custom_name);
+        System.out.println("curFinService" + curFinService);
+        System.out.println("onServiceTime" + onServiceTime);
+        System.out.println("onWaitTime" + onWaitTime);
+        System.out.println("custom_id" + custom_id);
+        faceInfo.describes();
+        voiceInfo.describes();
+    }
 }
