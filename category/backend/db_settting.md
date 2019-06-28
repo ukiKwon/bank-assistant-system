@@ -23,6 +23,7 @@
       isbusy boolean DEFAULT '0',
       numofcustom INTEGER DEFAULT '0',
       expectedwaittime INTEGER DEFAULT '0'
+      waitcustomlist VARCHAR(255) DEFAULT NULL;
   );
   ```  
 (2) 데이터셋  
@@ -39,10 +40,10 @@
 
 - frontState
 `INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0000", 0, 0, 0);
-INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0001", 1, 2, 50);
-INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0002", 1, 4, 30);
-INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0003", 1, 3, 15);
-INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0004", 1, 1, 40);`  
+INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime, waitcustomlist) VALUES("b0001", 1, 2, 50, "c0001:c0002:");
+INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime, waitcustomlist) VALUES("b0002", 1, 4, 30, "c0003:c0004:c0005:c0006:");
+INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime, waitcustomlist) VALUES("b0003", 1, 3, 15, "c0007:c0008:c0009:");
+INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime, waitcustomlist) VALUES("b0004", 1, 1, 40, "c0000:");`  
 
 (3) 예약어  
   - 데이터셋 모두 호출  
