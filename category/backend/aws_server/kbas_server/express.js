@@ -63,7 +63,7 @@ app.post("/bankque", (req, res) => {
             if (results[0].numofcustom > 0) {
                 //print-test
                 var customArray = results[0].waitcustomlist;
-                for (int i = 0; i < customArray.length; ++i) {
+                for (i = 0; i < customArray.length; ++i) {
                     console.log('>> wait_custom(' + i + ') :' + customArray[i]);
                 }
                 //search custom
