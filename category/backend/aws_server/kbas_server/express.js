@@ -59,21 +59,31 @@ app.post("/bankque", (req, res) => {
     connection.query(sql,[bid], function (error, results) {
         if (error) throw error;
         else {
-            console.log("SQL query is successed!!!!");
-            if (results[0].numofcustom > 0) {
-                //print-test
-                var customArray = results[0].waitcustomlist.split(':');
-                for (i = 0; i < customArray.length; ++i) {
-                    console.log('>> wait_custom(' + i + ') :' + customArray[i]);
-                }
-                //search custom
-                //var sql = 'SELECT cid, cname FROM `kbas`.`custom` WHERE cid=?';
-            } else {
-                res.json('등록정보가 없습니다');
-            }
-        }
-    });
-})
+              if (results[0].numofcustom > 0) {
+                  //chop the waiting custom listss
+                  var customArray = results[0].waitcustomlist.split(':');
+                  //get the first custom who the front the line
+                  if (customArray[0] != null || customArray[0] != ' ') {
+                      var sql = 'SELECT cid, cname FROM `kbas`.`custom` WHERE cid=?';
+                      connection.query(sql,[customArray[0]], function (error, results) {
+                          if (error) throw error;
+                          else {
+                              console.log(">> This banker will service for : " + custom_name);
+                              var custom_name = results[0].cname;
+                              res.json(custom_name);
+                          }
+                      })
+                  } else {
+                    console.log(">> (state:10002) This banker is in lazy state!!! Make work!!!");
+                    res.json("10002")
+                  }
+              } else {
+                  console.log(">> (state:10001) This banker is in lazy state!!! Make work!!!");
+                  res.json("10001");
+              }
+        }//else
+    })//connection
+});
 app.post("/post", (req, res) => {
    console.log("who get in here post /users");
    var inputData;
