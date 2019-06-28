@@ -43,11 +43,37 @@ app.use(express.urlencoded({extended:false}));
 app.get("/", (req, res, next) => {
   res.send('hello world!');
 });
-//back-processing
+/*
+  * back-processing
+*/
 app.get("/users", (req, res) => {
    console.log("who get in here/users");
    res.json(users)
 });
+//(1) 현재 은행원의 대기열 조회(Search a current banker's wait que assigned)
+app.post("/bankque", (req, res) => {
+    console.log(">> banker is lookup the Bank Que");
+    console.log(req.body);
+    var bid = req.body.bid;
+    var sql = 'SELECT frontid, isbusy, numofcustom, waitcustomlist FROM `kbas`.`frontState` WHERE frontid=?';
+    connection.query(sql,[bid], function (error, results) {
+        if (error) throw error;
+        else {
+            console.log("SQL query is successed!!!!");
+            if (results[0].numofcustom > 0) {
+                //print-test
+                var customArray = results[0].waitcustomlist;
+                for (int i = 0; i < customArray.length; ++i) {
+                    console.log('>> wait_custom(' + i + ') :' + customArray[i]);
+                }
+                //search custom
+                //var sql = 'SELECT cid, cname FROM `kbas`.`custom` WHERE cid=?';
+            } else {
+                res.json('등록정보가 없습니다');
+            }
+        }
+    });
+})
 app.post("/post", (req, res) => {
    console.log("who get in here post /users");
    var inputData;
