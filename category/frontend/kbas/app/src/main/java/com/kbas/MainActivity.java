@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     //aws-commu
     private final String mProtocol = "http://";
     private final String mServerPublicIp = "13.125.216.41";
-    private final String mServerPort = "80";
-    private final String mServerTargetDir ="/users";
+    private final String mServerPort = "3000";
+    private final String[] mServerTargetDir ={"/users", "/post"};
     private final int mServerCount = 3;
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setConfig() {
         //aws-connection
-        mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort;
+        mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort + mServerTargetDir[1];
         new JSONTask().execute(mUrls);//AsyncTask 시작시킴
         //mainView;
         mServerData=  (TextView) findViewById(R.id.serverview);
@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 BufferedReader reader = null;
 
                 try {
-                    URL url = new URL(urls[0] + mServerTargetDir);
+                    //URL url = new URL(urls[0] + mServerTargetDir);
+                    URL url = new URL(urls[0]);
                     System.out.println(">> url : " + url);
                     //연결을 함
                     con = (HttpURLConnection) url.openConnection();
