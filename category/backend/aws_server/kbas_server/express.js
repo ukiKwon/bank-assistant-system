@@ -62,7 +62,7 @@ app.post("/bankque", (req, res) => {
             console.log("SQL query is successed!!!!");
             if (results[0].numofcustom > 0) {
                 //print-test
-                var customArray = results[0].waitcustomlist;
+                var customArray = results[0].waitcustomlist.split(':');
                 for (i = 0; i < customArray.length; ++i) {
                     console.log('>> wait_custom(' + i + ') :' + customArray[i]);
                 }
