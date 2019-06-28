@@ -4,7 +4,10 @@ package com.kbas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private final String[] ERROR_STATE ={"10001", "10002"};
     //mainactivity-variables
     private final String TAG = "MainActivity";
-    //private boolean SERVER_STATE = false;
+    private boolean CUSTOM_STATE = false;
     //mainView
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
@@ -55,6 +58,24 @@ public class MainActivity extends AppCompatActivity {
         mServerData=  (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
         mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
+        //touch-event
+        mAnimationView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN :
+                    case MotionEvent.ACTION_MOVE :
+                    case MotionEvent.ACTION_UP   :
+                        //camera 이벤트 넘어가기
+                        if (CUSTOM_STATE) {
+                            G
+                            Intent server_return = new Intent(MainActivity.this, CameraActivity.class);
+                            startActivity(server_return);
+                        }
+
+                }
+                return true;
+            }
+        });
     }
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
@@ -124,20 +145,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            boolean custom_state = checkException(result);
+            CUSTOM_STATE = checkException(result);
             //If the server is on
-            setLottieView(custom_state);
-            setTextView(result, custom_state);
+            setLottieView();
+            setTextView(result, CUSTOM_STATE);
         }
     }
-    public void setLottieView(boolean _custom_state) {
+    public void setLottieView() {
         mAnimationView.cancelAnimation();
-        mAnimationView.setAnimation(_custom_state? R.raw.tab : R.raw.loading);
+        mAnimationView.setAnimation(CUSTOM_STATE? R.raw.tab : R.raw.loading);
         mAnimationView.playAnimation();
     }
-    public void setTextView(String _custom_name, boolean _custom_state){
-        mCustomData.setText(_custom_state? (_custom_name + getString(R.string.found_custom)) : getString(R.string.not_found_custom));
-        mServerData.setText(_custom_state? getString(R.string.server_connected) : getString(R.string.server_not_connected));
+    public void setTextView(String _custom_name){
+        mCustomData.setText(CUSTOM_STATE? (_custom_name + getString(R.string.found_custom)) : getString(R.string.not_found_custom));
+        mServerData.setText(CUSTOM_STATE? getString(R.string.server_connected) : getString(R.string.server_not_connected));
     }
     public boolean checkException(String _custom_name) {
         boolean flag = true;
