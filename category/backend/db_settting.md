@@ -42,4 +42,8 @@
 INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0001", 1, 2, 50);
 INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0002", 1, 4, 30);
 INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0003", 1, 3, 15);
-INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0004", 1, 1, 40);`
+INSERT INTO frontState(frontid, isbusy, numofcustom, expectedwaittime) VALUES("b0004", 1, 1, 40);`  
+
+(3) 예약어  
+  - 데이터셋 모두 호출  
+  `SELECT * FROM finService; SELECT * FROM lastFinService; SELECT * FROM frontState;`  
