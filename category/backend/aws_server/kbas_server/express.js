@@ -4,7 +4,7 @@
 var express =require("express");
 var app = express();
 var request = require("request");
-var port = process.env.PORT || 443;
+var port = process.env.PORT || 3000;
 var mysql =require("mysql");
 
 var connection = mysql.createConnection(//mysql
@@ -61,5 +61,5 @@ app.post("/post", (req, res) => {
    res.end();
 });
 //Listen
-app.listen(443);
+app.listen(3000);
 console.log("Listening on port", port);
