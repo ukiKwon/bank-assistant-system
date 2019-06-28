@@ -29,14 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private final String mProtocol = "http://";
     private final String mServerPublicIp = "13.125.216.41";
     private final String mServerPort = "3000";
-    private final String[] mServerTargetDir ={"/users", "/post"};
+    private final String[] mServerTargetDir ={"/users", "/post", "/bankque"};
     private final int mServerCount = 3;
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
+    private final String[] ERROR_STATE ={"10001", "10002"};
     //mainactivity-variables
     private final String TAG = "MainActivity";
-    private final String NOT_CONNECT_MSG = "server not connected";
-    private final String CONNECT_MSG = "server connected";
     //private boolean SERVER_STATE = false;
     //mainView
     private LottieAnimationView mAnimationView;
@@ -50,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setConfig() {
         //aws-connection
-        mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort + mServerTargetDir[1];
+        mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort + mServerTargetDir[2];
         new JSONTask().execute(mUrls);//AsyncTask 시작시킴
         //mainView;
         mServerData=  (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
-        mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view_load);
+        mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
     }
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
@@ -63,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("user_id", "androidTest");
-                jsonObject.accumulate("name", "yun");
+                jsonObject.accumulate("bid", bankerid);
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
 
@@ -126,27 +124,25 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            boolean SERVER_STATE = false;
-            if (result == null) {
-                result = NOT_CONNECT_MSG;
-            } else {
-                result = CONNECT_MSG;
-                SERVER_STATE = true;
-            }
-            System.out.println(">> result : " + result);
-            //todo : 내 창구에 고객이 대기하고 있는지를 물어봐야함. 일단은 server_state값으로 변경되게 조정
-            //Lottie-switch
-            switchLottie(SERVER_STATE);
-            swithcTextView( ,SERVER_STATE);
+            boolean custom_state = checkException(result);
+            //If the server is on
+            setLottieView(custom_state);
+            setTextView(result, custom_state);
         }
     }
-    public void switchLottie(boolean _custom_state) {
+    public void setLottieView(boolean _custom_state) {
         mAnimationView.cancelAnimation();
         mAnimationView.setAnimation(_custom_state? R.raw.tab : R.raw.loading);
         mAnimationView.playAnimation();
     }
-    public void swithcTextView(String _custom, boolean _custom_state){
-        boolean sflag = _custom_state && _custom != null;
-        mCustomData.setText(sflag? (_custom + R.string.found_custom) : String.valueOf(R.string.not_found_custom));
+    public void setTextView(String _custom_name, boolean _custom_state){
+        mCustomData.setText(_custom_state? (_custom_name + getString(R.string.found_custom)) : getString(R.string.not_found_custom));
+        mServerData.setText(_custom_state? getString(R.string.server_connected) : getString(R.string.server_not_connected));
+    }
+    public boolean checkException(String _custom_name) {
+        boolean flag = true;
+        for (int i = 0; flag && i < ERROR_STATE.length; ++i )
+            flag = (ERROR_STATE[i] == _custom_name);
+        return !flag;
     }
 }

@@ -3,4 +3,6 @@
     <!-- MainActivity -->
     <string name="found_custom">님이 오셨습니다!!!</string>
     <string name="not_found_custom">고객님을 기다려봅니다...</string>
+    <string name="server_connected">server connected</string>
+    <string name="server_not_connected">"server not connected"</string>
 </resources>
