@@ -3,9 +3,13 @@
 package com.kbas;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.AsyncTask;
 import android.widget.TextView;
 import android.os.Bundle;
+
+import com.airbnb.lottie.LottieAnimationView;
+
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,10 +20,11 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+    //banker-setting
+    private final String bankerid = "b0001";
     //aws-commu
     private final String mProtocol = "http://";
     private final String mServerPublicIp = "13.125.216.41";
@@ -28,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private final int mServerCount = 3;
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
-    //mainactivity-constant
+    //mainactivity-variables
     private final String TAG = "MainActivity";
     private final String NOT_CONNECT_MSG = "server not connected";
     private final String CONNECT_MSG = "server connected";
+    //private boolean SERVER_STATE = false;
     //mainView
+    private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
     private TextView mCustomData;//배정받은 번호와 고객 이름 출력
     @Override
@@ -48,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //mainView;
         mServerData=  (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
-
+        mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view_load);
     }
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
@@ -119,12 +126,27 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            boolean SERVER_STATE = false;
             if (result == null) {
                 result = NOT_CONNECT_MSG;
             } else {
                 result = CONNECT_MSG;
+                SERVER_STATE = true;
             }
-            mServerData.setText(result);//서버로 부터 받은 값을 출력해주는 부분
+            System.out.println(">> result : " + result);
+            //todo : 내 창구에 고객이 대기하고 있는지를 물어봐야함. 일단은 server_state값으로 변경되게 조정
+            //Lottie-switch
+            switchLottie(SERVER_STATE);
+            swithcTextView( ,SERVER_STATE);
         }
+    }
+    public void switchLottie(boolean _custom_state) {
+        mAnimationView.cancelAnimation();
+        mAnimationView.setAnimation(_custom_state? R.raw.tab : R.raw.loading);
+        mAnimationView.playAnimation();
+    }
+    public void swithcTextView(String _custom, boolean _custom_state){
+        boolean sflag = _custom_state && _custom != null;
+        mCustomData.setText(sflag? (_custom + R.string.found_custom) : String.valueOf(R.string.not_found_custom));
     }
 }

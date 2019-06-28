@@ -49,7 +49,6 @@ public class IntroActivity extends AppCompatActivity {
 //            System.out.println(">> Lottie is on");
 //        }
 //        animationView.setProgress(0.5f);
-        //lottieDrawable.setImagesAssetsFolder("./raw/images/");
     }
     @Override
     public void onPause() {

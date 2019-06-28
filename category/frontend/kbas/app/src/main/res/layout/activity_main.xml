@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="casual"
-        android:text="고객님을 기다려봅니다..."
+        android:text="@string/not_found_custom"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -39,8 +40,8 @@
         android:id="@+id/animation_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
-
         android:layout_marginTop="200dp"
+        android:visibility="visible"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
