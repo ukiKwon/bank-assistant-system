@@ -32,5 +32,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision-face-model:18.0.0'
     //intro-lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
+    //aws-commu
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 }
 apply plugin: 'com.google.gms.google-services'
