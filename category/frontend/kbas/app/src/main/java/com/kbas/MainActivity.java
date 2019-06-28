@@ -1,25 +1,45 @@
+//socket_code_ref : http://mystudyroom.net/2017/10/11/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-node-js%EC%84%9C%EB%B2%84%EB%A1%9C-post%EB%B0%A9%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EB%B3%B4%EB%82%B4%EA%B8%B0/
+
 package com.kbas;
 
-import android.os.Bundle;
-import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URISyntaxException;
-
 import androidx.appcompat.app.AppCompatActivity;
-import io.socket.client.IO;
 import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
+
+import android.os.AsyncTask;
+import android.widget.TextView;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     //aws-commu
-    private final String mServerPublicIp="13.125.216.41";
-    private final String mServerPort="443";
-    private Socket mSocket;
-    //mainactivity
-    private final String TAG="MainActivity";
+    private final String mProtocol = "https://";
+    private final String mServerPublicIp = "13.125.216.41";
+    private final String mServerPort = "443";
+    private final String mServerTargetDir ="/users";
+    private final int mServerCount = 3;
+    private String mUrls[] = new String[mServerCount];
+    private final String[] mDeliver = {"post", "get"};
+    //mainactivity-constant
+    private final String TAG = "MainActivity";
+    private final String NOT_CONNECT_MSG = "server not connected";
+    private final String CONNECT_MSG = "server connected";
+    //mainView
+    private TextView mServerData;  //서버와 연결 상태 출력
+    private TextView mCustomData;//배정받은 번호와 고객 이름 출력
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,35 +47,88 @@ public class MainActivity extends AppCompatActivity {
         setConfig();
     }
     public void setConfig() {
-        try {
-            mSocket = IO.socket(mServerPublicIp +":" + mServerPort);
-            mSocket.connect();
-            mSocket.on(Socket.EVENT_CONNECT, onConnect);
-            mSocket.on("serverMessage", onMessageReceived);
-        } catch(URISyntaxException e) {
-            e.printStackTrace();
-        }
-    }
-    // Socket서버에 connect 되면 발생하는 이벤트
-    private Emitter.Listener onConnect = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            mSocket.emit("clientMessage", "hi");
-        }
-    };
+        //aws-connection
+        mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort;
+        new JSONTask().execute(mUrls);//AsyncTask 시작시킴
+        //mainView;
+        mServerData=  (TextView) findViewById(R.id.serverview);
+        mCustomData = (TextView) findViewById(R.id.customview);
 
-    // 서버로부터 전달받은 'chat-message' Event 처리.
-    private Emitter.Listener onMessageReceived = new Emitter.Listener() {
+    }
+    public class JSONTask extends AsyncTask<String, String, String> {
         @Override
-        public void call(Object... args) {
-            // 전달받은 데이터는 아래와 같이 추출할 수 있습니다.
+        protected String doInBackground(String[] urls) {
             try {
-                JSONObject receivedData = (JSONObject) args[0];
-                Log.d(TAG, receivedData.getString("msg"));
-                Log.d(TAG, receivedData.getString("data"));
-            } catch (JSONException e) {
+                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("user_id", "androidTest");
+                jsonObject.accumulate("name", "yun");
+                HttpURLConnection con = null;
+                BufferedReader reader = null;
+
+                try {
+                    URL url = new URL(urls[0] + mServerTargetDir);
+                    System.out.println(">> url : " + url);
+                    //연결을 함
+                    con = (HttpURLConnection) url.openConnection();
+                    con.setRequestMethod(mDeliver[0]);//POST방식으로 보냄
+                    con.setRequestProperty("Cache - Control", "no - cache");//캐시 설정
+                    con.setRequestProperty("Content - Type", "application / json");//application JSON 형식으로 전송
+                    con.setRequestProperty("Accept", "text / html");//서버에 response 데이터를 html로 받음
+                    con.setDoOutput(true);//Outstream으로 post 데이터를 넘겨주겠다는 의미
+                    con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
+                    con.connect();
+
+                    //서버로 보내기위해서 스트림 만듬
+                    OutputStream outStream = con.getOutputStream();
+
+                    //버퍼를 생성하고 넣음
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outStream));
+                    writer.write(jsonObject.toString());
+                    writer.flush();
+                    writer.close();//버퍼를 받아줌
+
+                    //서버로 부터 데이터를 받음
+                    InputStream stream = con.getInputStream();
+                    reader = new BufferedReader(new InputStreamReader(stream));
+                    StringBuffer buffer = new StringBuffer();
+                    String line = "";
+
+                    while ((line = reader.readLine()) != null) {
+                        buffer.append(line);
+                    }
+                    return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (con != null) {
+                        con.disconnect();
+                    }
+                    try {
+                        if (reader != null) {
+                            reader.close();//버퍼를 닫아줌
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (Exception e) {
+
                 e.printStackTrace();
             }
+            return null;
         }
-    };
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (result == null) {
+                result = NOT_CONNECT_MSG;
+            } else {
+                result = CONNECT_MSG;
+            }
+            mServerData.setText(result);//서버로 부터 받은 값을 출력해주는 부분
+        }
+    }
 }
