@@ -3,14 +3,9 @@
 package com.kbas;
 
 import androidx.appcompat.app.AppCompatActivity;
-import io.socket.client.Socket;
-
 import android.os.AsyncTask;
 import android.widget.TextView;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -26,13 +21,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     //aws-commu
-    private final String mProtocol = "https://";
+    private final String mProtocol = "http://";
     private final String mServerPublicIp = "13.125.216.41";
-    private final String mServerPort = "443";
+    private final String mServerPort = "80";
     private final String mServerTargetDir ="/users";
     private final int mServerCount = 3;
     private String mUrls[] = new String[mServerCount];
-    private final String[] mDeliver = {"post", "get"};
+    private final String[] mDeliver = {"POST", "GET"};
     //mainactivity-constant
     private final String TAG = "MainActivity";
     private final String NOT_CONNECT_MSG = "server not connected";
@@ -72,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
                     //연결을 함
                     con = (HttpURLConnection) url.openConnection();
                     con.setRequestMethod(mDeliver[0]);//POST방식으로 보냄
-                    con.setRequestProperty("Cache - Control", "no - cache");//캐시 설정
-                    con.setRequestProperty("Content - Type", "application / json");//application JSON 형식으로 전송
-                    con.setRequestProperty("Accept", "text / html");//서버에 response 데이터를 html로 받음
+                    con.setRequestProperty("Cache-Control", "no-cache");//캐시 설정
+                    con.setRequestProperty("Content-Type", "application/json");//application JSON 형식으로 전송
+                    con.setRequestProperty("Accept", "text/html");//서버에 response 데이터를 html로 받음
                     con.setDoOutput(true);//Outstream으로 post 데이터를 넘겨주겠다는 의미
                     con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
                     con.connect();
