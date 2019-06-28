@@ -63,21 +63,21 @@ app.post("/bankque", (req, res) => {
                   //chop the waiting custom listss
                   var customArray = results[0].waitcustomlist.split(':');
                   //print_test
-                  for (i = 0; i < customArray.length; ++i) {
-                      console.log(">> split_wait_res : " + customArray[i]);
-                  }
-                  if (customArray[customArray.length - 1] == '') {
-                      console.log(">> last_val_type is 0 empty");
-                  }
-                  else if (customArray[customArray.length - 1] == ' ') {
-                      console.log(">> last_val_type is space");
-                  }
-                  else if (customArray[customArray.length - 1] == null) {
-                      console.log(">> last_val_type is null");
-                  }
-                  else if (customArray[customArray.length - 1] == " ") {
-                      console.log(">> last_val_type is String empty");
-                  }
+                  // for (i = 0; i < customArray.length; ++i) {
+                  //     console.log(">> split_wait_res : " + customArray[i]);
+                  // }
+                  // if (customArray[customArray.length - 1] == '') {
+                  //     console.log(">> last_val_type is 0 empty");
+                  // }
+                  // else if (customArray[customArray.length - 1] == ' ') {
+                  //     console.log(">> last_val_type is space");
+                  // }
+                  // else if (customArray[customArray.length - 1] == null) {
+                  //     console.log(">> last_val_type is null");
+                  // }
+                  // else if (customArray[customArray.length - 1] == " ") {
+                  //     console.log(">> last_val_type is String empty");
+                  // }
                   //get the first custom who the front the line
                   if (customArray[0] != null || customArray[0] != '') {
                       var sql = 'SELECT cid, cname FROM `kbas`.`custom` WHERE cid=?';
@@ -86,7 +86,7 @@ app.post("/bankque", (req, res) => {
                           else {
                               console.log(">> This banker will service for : " + results[0].cname);
                               var custom_name = results[0].cname;
-                              res.json(results[0].cname);
+                              res.json(results[0].cid + ":" + results[0].cname);
                           }
                       })
                   } else {
