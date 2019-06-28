@@ -79,7 +79,7 @@ app.post("/bankque", (req, res) => {
                       console.log(">> last_val_type is String empty");
                   }
                   //get the first custom who the front the line
-                  if (customArray[0] != null || customArray[0] != ' ') {
+                  if (customArray[0] != null || customArray[0] != '') {
                       var sql = 'SELECT cid, cname FROM `kbas`.`custom` WHERE cid=?';
                       connection.query(sql,[customArray[0]], function (error, results) {
                           if (error) throw error;
