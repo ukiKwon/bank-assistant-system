@@ -6,14 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.RemoteException;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -39,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
     private final String[] ERROR_STATE ={"10001", "10002"};
-
+    /*
+        SocketManager manager = null;
+        final int STATUS_DISCONNECTED = 0;// 소켓의 상태를 표현하기 위한 상수
+        final int STATUS_CONNECTED = 1;
+    */
     //mainactivity-variables
     private final String TAG = "MainActivity";
     private final String DELIMETER = ":";
@@ -55,10 +61,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setConfig();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("MainActivity", "onResume()");
+
+        // get SocketManager instance
+        //manager = SocketManager.getInstance();
+    }
+    /*
+    public void connectToServer(View v) throws RemoteException {
+        manager.setSocket(mServerPublicIp);
+        manager.connect();
+    }
+
+    public void sendData(View v) throws RemoteException {
+        if(manager.getStatus() == STATUS_CONNECTED){
+            manager.send();
+        }
+        else {
+            Toast.makeText(this, "not connected to server", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void receiveData(View v) throws RemoteException {
+        if(manager.getStatus() == STATUS_CONNECTED){
+            manager.receive();
+        }
+        else {
+            Toast.makeText(this, "not connected to server", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    */
     public void setConfig() {
         //aws-connection
         mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort + mServerTargetDir[2];
         new JSONTask().execute(mUrls);//AsyncTask 시작시킴
+
         //mainView;
         mServerData=  (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
@@ -73,11 +113,12 @@ public class MainActivity extends AppCompatActivity {
                         //camera 이벤트 넘어가기
                         if (CUSTOM_STATE && mVisitedData != null) {
                             //Gson gson = new GsonBuilder().create();
-                            Gson gson = new Gson();
-                            String data = gson.toJson(mVisitedData);
-                            System.out.println("gson_string : " + data);
+//                            Gson gson = new Gson();
+//                            String data = gson.toJson(mVisitedData);
+//                            System.out.println("gson_string : " + data);
                             Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
-                            intent.putExtra("vdata", data);
+                            intent.putExtra("cid", mVisitedData.getCustomId());
+                            intent.putExtra("cname", mVisitedData.getCustomName());
                             startActivity(intent);
                         }
                 }

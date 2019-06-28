@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecordMediaActivity extends AppCompatActivity {
-    private VisitedData mVisitedData;
+    private VisitedData mVisitedData = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,13 +18,12 @@ public class RecordMediaActivity extends AppCompatActivity {
     public void setConfig() {
         //Intent from Activity
         Intent intent = getIntent();
-        String vdata = intent.getExtras().getString("vdata");
-        System.out.println(">> Intent data : " + vdata);
+        String mCid = intent.getExtras().getString("cid");
+        String mCname = intent.getExtras().getString("cname");
         //check data
         try {
-            if (vdata != null) {
-                Gson gson = new Gson();
-                mVisitedData = gson.fromJson(vdata, VisitedData.class);
+            if (mCid != null && mCname != null) {
+                mVisitedData = new VisitedData(mCid, mCname);
                 mVisitedData.describes();
             } else {
                 throw new Exception();
