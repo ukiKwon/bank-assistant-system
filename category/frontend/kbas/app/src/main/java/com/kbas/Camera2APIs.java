@@ -12,14 +12,23 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.ImageReader;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Size;
 import android.view.Surface;
 
+import java.io.File;
 import java.util.Collections;
 
 import androidx.annotation.NonNull;
 
 public class Camera2APIs {
+
+    private HandlerThread mBackgroundThread;
+    private Handler mBackgroundHandler;
+    private ImageReader mImageReader;
+    private File mFile;
 
     interface Camera2Interface {
         void onCameraDeviceOpened(CameraDevice cameraDevice, Size cameraSize);
@@ -125,7 +134,11 @@ public class Camera2APIs {
             e.printStackTrace();
         }
     }
-
+    private void openBackgroundThread() {
+        mBackgroundThread = new HandlerThread("camera_background_thread");
+        mBackgroundThread.start();
+        mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
+    }
     private CameraCaptureSession.CaptureCallback mCaptureCallback = new CameraCaptureSession.CaptureCallback() {
         @Override
         public void onCaptureProgressed(CameraCaptureSession session, CaptureRequest request, CaptureResult partialResult) {

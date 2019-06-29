@@ -10,16 +10,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-import android.os.RemoteException;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.gson.Gson;
 
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -52,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean CUSTOM_STATE = false;
     private VisitedData mVisitedData;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 00001;
+    private final int MY_PERMISSIONS_REQUEST_VOICE = 00002;
     //mainView
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
@@ -89,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP:
                         //camera 이벤트 넘어가기
                         if (CUSTOM_STATE && mVisitedData != null) {
-                            Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
+                            //Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
+                            Intent intent = new Intent(MainActivity.this, CameraApiActivity.class);
                             intent.putExtra("cid", mVisitedData.getCustomId());
                             intent.putExtra("cname", mVisitedData.getCustomName());
                             startActivity(intent);
@@ -226,6 +225,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    public void voicePermissionChecker(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
+        }
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -242,8 +247,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return;
             }
+            case MY_PERMISSIONS_REQUEST_VOICE : {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
             // other 'case' lines to check for other
             // permissions this app might request
         }
     }
+
 }
