@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 repositories {
     jcenter()
@@ -42,5 +46,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     //voice-visual
     implementation 'com.tyorikan:voice-recording-visualizer:1.0.3@aar'
+    //bind
+    implementation 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //fire
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //mutil-screen
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,7 +1,6 @@
 //socket_code_ref : http://mystudyroom.net/2017/10/11/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-node-js%EC%84%9C%EB%B2%84%EB%A1%9C-post%EB%B0%A9%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EB%B3%B4%EB%82%B4%EA%B8%B0/
 
 package com.kbas;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -10,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private final String DELIMETER = ":";
     private boolean SERVER_STATE = false;
     private boolean CUSTOM_STATE = false;
-    private VisitedData mVisitedData;
+    private com.kbas.VisitedData mVisitedData;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 00001;
     private final int MY_PERMISSIONS_REQUEST_VOICE = 00002;
     private final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 00003;
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 if (res.length >= 2) {
                     System.out.println("id : " + res[0].substring(1));
                     System.out.println("name : " + res[1].substring(0, res[1].length() - 1));
-                    mVisitedData = new VisitedData(res[0], res[1]);
+                    mVisitedData = new com.kbas.VisitedData(res[0], res[1]);
                     result = res[1].substring(0, res[1].length() - 1);
                 }
             }

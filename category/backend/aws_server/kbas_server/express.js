@@ -99,7 +99,7 @@ app.post("/bankque", (req, res) => {
         }//else
     })//connection
 });
-//(2) 고객에게 현재 대기열 안내
+//(2) 지난 금융 이력 반환
 app.post("/finsearch", (req, res) => {
     console.log(">> custom is lookup the proper bank");
     var cid = req.body.cid;
@@ -118,7 +118,8 @@ app.post("/finsearch", (req, res) => {
         }
     })
 });
-
+//(3) 고객에게 대기열 반환
+app.post
 app.post("/post", (req, res) => {
    console.log("who get in here post /users");
    var inputData;
