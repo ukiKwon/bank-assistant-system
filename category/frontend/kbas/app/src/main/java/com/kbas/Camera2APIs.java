@@ -39,16 +39,19 @@ public class Camera2APIs {
     private CameraCaptureSession mCaptureSession;
     private CameraDevice mCameraDevice;
     private CaptureRequest.Builder mPreviewRequestBuilder;
+    //set-get
+    public CameraDevice getmCameraDevice() {return mCameraDevice;}
+    public CameraCaptureSession getmCaptureSession() { return mCaptureSession;}
+    public CaptureRequest.Builder getmPreviewRequestBuilder() { return mPreviewRequestBuilder;}
 
+    //method
     public Camera2APIs(Camera2Interface impl) {
         mInterface = impl;
     }
-
     public CameraManager CameraManager_1(Activity activity) {
         CameraManager cameraManager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
         return cameraManager;
     }
-
     public String CameraCharacteristics_2(CameraManager cameraManager) {
         try {
             for (String cameraId : cameraManager.getCameraIdList()) {
@@ -73,7 +76,6 @@ public class Camera2APIs {
 
         return null;
     }
-
     private CameraDevice.StateCallback mCameraDeviceStateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
@@ -91,7 +93,6 @@ public class Camera2APIs {
             camera.close();
         }
     };
-
     public void CameraDevice_3(CameraManager cameraManager, String cameraId) {
         try {
             cameraManager.openCamera(cameraId, mCameraDeviceStateCallback, null);
@@ -99,7 +100,6 @@ public class Camera2APIs {
             e.printStackTrace();
         }
     }
-
     private CameraCaptureSession.StateCallback mCaptureSessionCallback = new CameraCaptureSession.StateCallback() {
         @Override
         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
@@ -117,7 +117,6 @@ public class Camera2APIs {
 
         }
     };
-
     public void CaptureSession_4(CameraDevice cameraDevice, Surface surface) {
         try {
             cameraDevice.createCaptureSession(Collections.singletonList(surface), mCaptureSessionCallback, null);
@@ -125,7 +124,6 @@ public class Camera2APIs {
             e.printStackTrace();
         }
     }
-
     public void CaptureRequest_5(CameraDevice cameraDevice, Surface surface) {
         try {
             mPreviewRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -150,7 +148,6 @@ public class Camera2APIs {
             super.onCaptureCompleted(session, request, result);
         }
     };
-
     public void closeCamera() {
         if (null != mCaptureSession) {
             mCaptureSession.close();
