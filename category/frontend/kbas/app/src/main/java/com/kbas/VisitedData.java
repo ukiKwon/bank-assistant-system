@@ -6,8 +6,8 @@ public class VisitedData extends BaseModel {
     private String curFinService;//현재 상담받고 있는 상담 종류
     private long onServiceTime;//현재 상담 진행 시간
     private long onWaitTime;//상담 전 기다린 시간
-    private FaceInfo faceInfo;//얼굴 정보
-    private VoiceInfo voiceInfo;//음성 정보
+    private FaceInfo faceInfo = null;//얼굴 정보
+    private VoiceInfo voiceInfo = null;//음성 정보
 
     public VisitedData() {;}
     public VisitedData(String custom_id, String custom_name) {
@@ -65,7 +65,7 @@ public class VisitedData extends BaseModel {
         System.out.println("onServiceTime" + onServiceTime);
         System.out.println("onWaitTime" + onWaitTime);
         System.out.println("custom_id" + custom_id);
-        faceInfo.describes();
-        voiceInfo.describes();
+        if (faceInfo != null) faceInfo.describes();
+        if (voiceInfo != null) voiceInfo.describes();
     }
 }

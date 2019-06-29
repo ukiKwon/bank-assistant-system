@@ -3,8 +3,12 @@
 package com.kbas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.RemoteException;
 import android.util.Log;
@@ -36,86 +40,55 @@ public class MainActivity extends AppCompatActivity {
     private final String mProtocol = "http://";
     private final String mServerPublicIp = "13.125.216.41";
     private final String mServerPort = "3000";
-    private final String[] mServerTargetDir ={"/users", "/post", "/bankque"};
+    private final String[] mServerTargetDir = {"/users", "/post", "/bankque"};
     private final int mServerCount = 3;
     private String mUrls[] = new String[mServerCount];
     private final String[] mDeliver = {"POST", "GET"};
-    private final String[] ERROR_STATE ={"10001", "10002"};
-    /*
-        SocketManager manager = null;
-        final int STATUS_DISCONNECTED = 0;// 소켓의 상태를 표현하기 위한 상수
-        final int STATUS_CONNECTED = 1;
-    */
+    private final String[] ERROR_STATE = {"10001", "10002"};
     //mainactivity-variables
     private final String TAG = "MainActivity";
     private final String DELIMETER = ":";
+    private boolean SERVER_STATE = false;
     private boolean CUSTOM_STATE = false;
     private VisitedData mVisitedData;
+    private final int MY_PERMISSIONS_REQUEST_CAMERA = 00001;
     //mainView
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
     private TextView mCustomData;//배정받은 번호와 고객 이름 출력
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setConfig();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.i("MainActivity", "onResume()");
-
-        // get SocketManager instance
-        //manager = SocketManager.getInstance();
-    }
-    /*
-    public void connectToServer(View v) throws RemoteException {
-        manager.setSocket(mServerPublicIp);
-        manager.connect();
     }
 
-    public void sendData(View v) throws RemoteException {
-        if(manager.getStatus() == STATUS_CONNECTED){
-            manager.send();
-        }
-        else {
-            Toast.makeText(this, "not connected to server", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void receiveData(View v) throws RemoteException {
-        if(manager.getStatus() == STATUS_CONNECTED){
-            manager.receive();
-        }
-        else {
-            Toast.makeText(this, "not connected to server", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-    */
     public void setConfig() {
+        //permission-check
+        cameraPermissionChecker();
         //aws-connection
         mUrls[0] = mProtocol + mServerPublicIp + ":" + mServerPort + mServerTargetDir[2];
         new JSONTask().execute(mUrls);//AsyncTask 시작시킴
-
         //mainView;
-        mServerData=  (TextView) findViewById(R.id.serverview);
+        mServerData = (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
         mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
         //touch-event
         mAnimationView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN :
-                    case MotionEvent.ACTION_MOVE :
-                    case MotionEvent.ACTION_UP   :
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                    case MotionEvent.ACTION_MOVE:
+                    case MotionEvent.ACTION_UP:
                         //camera 이벤트 넘어가기
                         if (CUSTOM_STATE && mVisitedData != null) {
-                            //Gson gson = new GsonBuilder().create();
-//                            Gson gson = new Gson();
-//                            String data = gson.toJson(mVisitedData);
-//                            System.out.println("gson_string : " + data);
                             Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
                             intent.putExtra("cid", mVisitedData.getCustomId());
                             intent.putExtra("cname", mVisitedData.getCustomName());
@@ -126,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public class JSONTask extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String[] urls) {
@@ -135,11 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 jsonObject.accumulate("bid", bankerid);
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
-
                 try {
                     //URL url = new URL(urls[0] + mServerTargetDir);
                     URL url = new URL(urls[0]);
-                    System.out.println(">> url : " + url);
                     //연결을 함
                     con = (HttpURLConnection) url.openConnection();
                     con.setRequestMethod(mDeliver[0]);//POST방식으로 보냄
@@ -194,31 +166,84 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            //status check
             CUSTOM_STATE = checkException(result);
+            SERVER_STATE = (result != null);
+            //init-visited data setting
+            String[] res = null;
+            if (SERVER_STATE && CUSTOM_STATE) {
+                res = result.split(DELIMETER);
+                if (res.length >= 2) {
+                    System.out.println("id : " + res[0].substring(1));
+                    System.out.println("name : " + res[1].substring(0, res[1].length() - 1));
+                    mVisitedData = new VisitedData(res[0], res[1]);
+                    result = res[1].substring(0, res[1].length() - 1);
+                }
+            }
             //If the server is on
             setLottieView();
             setTextView(result);
-            if (CUSTOM_STATE) {
-                String[] res = result.split(DELIMETER);
-                if (res.length >= 2) {
-                    mVisitedData = new VisitedData(res[0], res[1]);
-                }
-            }
         }
     }
     public void setLottieView() {
         mAnimationView.cancelAnimation();
-        mAnimationView.setAnimation(CUSTOM_STATE? R.raw.tab : R.raw.loading);
+        mAnimationView.setAnimation(SERVER_STATE & CUSTOM_STATE? R.raw.tab : R.raw.loading);
         mAnimationView.playAnimation();
     }
     public void setTextView(String _custom_name){
-        mCustomData.setText(CUSTOM_STATE? (_custom_name + getString(R.string.found_custom)) : getString(R.string.not_found_custom));
-        mServerData.setText(CUSTOM_STATE? getString(R.string.server_connected) : getString(R.string.server_not_connected));
+        System.out.println("_custom_name : " + _custom_name);
+        mCustomData.setText(SERVER_STATE & CUSTOM_STATE? (_custom_name + getString(R.string.found_custom)) : getString(R.string.not_found_custom));
+        mServerData.setText(SERVER_STATE & CUSTOM_STATE? getString(R.string.server_connected) : getString(R.string.server_not_connected));
     }
     public boolean checkException(String _custom_name) {
         boolean flag = true;
         for (int i = 0; flag && i < ERROR_STATE.length; ++i )
             flag = (ERROR_STATE[i] == _custom_name);
         return !flag;
+    }
+    public void cameraPermissionChecker() {
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    Manifest.permission.CAMERA)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST_CAMERA);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }
