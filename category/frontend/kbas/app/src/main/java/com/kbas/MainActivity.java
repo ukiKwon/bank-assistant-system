@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     private VisitedData mVisitedData;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 00001;
     private final int MY_PERMISSIONS_REQUEST_VOICE = 00002;
+    private final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 00003;
+    private final int MY_PERMISSIONS_READ_EXTERNAL_STORAGE = 00004;
+
     //mainView
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
@@ -248,6 +251,26 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             case MY_PERMISSIONS_REQUEST_VOICE : {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }case MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE : {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }case MY_PERMISSIONS_READ_EXTERNAL_STORAGE : {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the

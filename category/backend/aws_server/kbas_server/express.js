@@ -53,7 +53,6 @@ app.get("/users", (req, res) => {
 //(1) 현재 은행원의 대기열 조회(Search a current banker's wait que assigned)
 app.post("/bankque", (req, res) => {
     console.log(">> banker is lookup the Bank Que");
-    console.log(req.body);
     var bid = req.body.bid;
     var sql = 'SELECT frontid, isbusy, numofcustom, waitcustomlist FROM `kbas`.`frontState` WHERE frontid=?';
     connection.query(sql,[bid], function (error, results) {
@@ -100,6 +99,26 @@ app.post("/bankque", (req, res) => {
         }//else
     })//connection
 });
+//(2) 고객에게 현재 대기열 안내
+app.post("/finsearch", (req, res) => {
+    console.log(">> custom is lookup the proper bank");
+    var cid = req.body.cid;
+    var sql = 'SELECT finid FROM `kbas`.`lastFinService` WHERE cid=?';
+    connection.query(sql,[cid], function (error, results) {
+        if (error) throw error;
+        else {
+              var sql = 'SELECT finname FROM `kbas`.`finService` WHERE finid=?';
+              connection.query(sql,[results[0].findid], function (error, results) {
+                  if (error) throw error;
+                  else {
+                      console.log(">> This custom were serviced by " + results[0].finname);
+                      res.json(results[0].finname);
+                  }
+              })
+        }
+    })
+});
+
 app.post("/post", (req, res) => {
    console.log("who get in here post /users");
    var inputData;

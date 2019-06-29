@@ -2,9 +2,12 @@ package com.kbas;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
@@ -25,6 +28,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -72,6 +76,7 @@ public class CameraApiActivity extends AppCompatActivity {
     private TextureView mTextureView;
     private TextView mTextView;
     private VisitedData mVisitedData = null;
+    private boolean IsCaptured = false;
     //
     private FirebaseVisionFaceDetectorOptions highAccuracyOpts = null, realTimeOpts = null;
     private FirebaseVisionImage image = null;
@@ -85,6 +90,7 @@ public class CameraApiActivity extends AppCompatActivity {
         ORIENTATIONS.append(Surface.ROTATION_180, 270);
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
+    //camera-variables
     private String cameraId;
     protected CameraDevice cameraDevice;
     protected CameraCaptureSession cameraCaptureSessions;
@@ -112,7 +118,7 @@ public class CameraApiActivity extends AppCompatActivity {
         String mCid = intent.getExtras().getString("cid");
         String mCname = intent.getExtras().getString("cname");
         //todo : issu
-        mCid = mCid.substring(0);
+        mCid = mCid.substring(1);
         mCname = mCname.substring(0, mCname.length() - 1);
         try {
             if (mCid != null && mCname != null) {
@@ -141,7 +147,6 @@ public class CameraApiActivity extends AppCompatActivity {
                 //Todo : 음성 인식 기능 결합
             }
         });
-        //
         mTextView = (TextView) findViewById(R.id.textView);
         setTextInTime(getString(R.string.sales_on), 1000); //text-switching
     }
@@ -209,63 +214,13 @@ public class CameraApiActivity extends AppCompatActivity {
         FirebaseVisionImage image;
         try {
             Uri uri = Uri.parse(pic_path);
+            System.out.println(">> the pic_path when click : " + pic_path);
             image = FirebaseVisionImage.fromFilePath(this, uri);
 
         //3.Run the face detector
         detector = FirebaseVision.getInstance()
                 .getVisionFaceDetector(highAccuracyOpts);
         //4.processing
-        Task<List<FirebaseVisionFace>> result =
-                detector.detectInImage(image)
-                        .addOnSuccessListener(
-                                new OnSuccessListener<List<FirebaseVisionFace>>() {
-                                    @Override
-                                    public void onSuccess(List<FirebaseVisionFace> faces) {
-                                        // Task completed successfully
-                                        Log.i("Face_function", "Detected!!");
-                                        for (FirebaseVisionFace face : faces) {
-                                            Rect bounds = face.getBoundingBox();
-                                            float rotY = face.getHeadEulerAngleY();  // Head is rotated to the right rotY degrees
-                                            float rotZ = face.getHeadEulerAngleZ();  // Head is tilted sideways rotZ degrees
-                                            Log.i("Rotation_HEAD", "rotY :" + rotY + ", rotZ :" + rotZ);
-                                            // If landmark detection was enabled (mouth, ears, eyes, cheeks, and
-                                            // nose available):
-                                            FirebaseVisionFaceLandmark leftEar = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EAR);
-                                            if (leftEar != null) {
-                                                FirebaseVisionPoint leftEarPos = leftEar.getPosition();
-                                                Log.i("leftEarPos", leftEarPos + "");
-                                            }
-
-                                            // If contour detection was enabled:
-                                            List<FirebaseVisionPoint> leftEyeContour =
-                                                    face.getContour(FirebaseVisionFaceContour.LEFT_EYE).getPoints();
-                                            List<FirebaseVisionPoint> upperLipBottomContour =
-                                                    face.getContour(FirebaseVisionFaceContour.UPPER_LIP_BOTTOM).getPoints();
-
-                                            // If classification was enabled:
-                                            if (face.getSmilingProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
-                                                float smileProb = face.getSmilingProbability();
-                                                Log.i("Smile_prob", smileProb + "");
-                                            }
-                                            if (face.getRightEyeOpenProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
-                                                float rightEyeOpenProb = face.getRightEyeOpenProbability();
-                                            }
-
-                                            // If face tracking was enabled:
-                                            if (face.getTrackingId() != FirebaseVisionFace.INVALID_ID) {
-                                                int id = face.getTrackingId();
-                                            }
-                                        }
-                                    }
-                                })
-                        .addOnFailureListener(
-                                new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Task failed with an exception
-                                        // ...
-                                    }
-                                });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -288,6 +243,43 @@ public class CameraApiActivity extends AppCompatActivity {
         public void onSurfaceTextureUpdated(SurfaceTexture surface) {
         }
     };
+    /**
+     * Calculates a point (focus point) in the bitmap, around which cropping needs to be performed.
+     *
+     * @param bitmap                 Bitmap in which faces are to be detected.
+     * @param faceCenterCropListener To send the updated bitmap with center point.
+     */
+    public void detectFace(Bitmap bitmap, FaceCenterCropListener faceCenterCropListener) {
+        Log.d("Time log", "Detect face starts");
+        firebaseVisionImage = FirebaseVisionImage.fromBitmap(bitmap);
+        Log.d("Time log", "FBVI convertion done");
+
+        Task<List<FirebaseVisionFace>> result =
+                detector.detectInImage(firebaseVisionImage)
+                        .addOnSuccessListener(
+                                faces -> {
+                                    // Task completed successfully
+
+                                    Log.d("Time log", "Face detection done");
+
+                                    Log.d(TAG, "detectFace: " + faces.size());
+
+                                    final int totalFaces = faces.size();
+                                    if (totalFaces > 0) {
+                                        transform(bitmap, getCenterPoint(faces), faceCenterCropListener);
+                                    } else
+                                        faceCenterCropListener.onFailure();
+
+
+                                })
+                        .addOnFailureListener(
+                                e -> {
+                                    // Task failed with an exception
+                                    // ...
+                                    faceCenterCropListener.onFailure();
+                                });
+
+    }
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(CameraDevice camera) {
@@ -343,7 +335,8 @@ public class CameraApiActivity extends AppCompatActivity {
             CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraDevice.getId());
             Size[] jpegSizes = null;
             if (characteristics != null) {
-                jpegSizes = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP).getOutputSizes(ImageFormat.JPEG);
+//                jpegSizes = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP).getOutputSizes(ImageFormat.JPEG);
+                jpegSizes = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP).getOutputSizes(ImageFormat.YUV_420_888);
             }
             int width = 640;
             int height = 480;
@@ -365,6 +358,10 @@ public class CameraApiActivity extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
             final File file = new File(Environment.getExternalStorageDirectory() + "/" + mVisitedData.getCustomId() + "/pic" + System.currentTimeMillis() + ".jpg");
+            System.out.println("Environment.getExternalStorageDirectory() :" + Environment.getExternalStorageDirectory());
+            System.out.println("mVisitedData.getCustomId() :" + mVisitedData.getCustomId());
+            System.out.println("file_info :" + file.getName());
+            System.out.println("file_info :" + file.getPath());
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
@@ -465,8 +462,10 @@ public class CameraApiActivity extends AppCompatActivity {
             StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             assert map != null;
             imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
-
-           if (!voicePermissionChecker()) {return ;}
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(CameraApiActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CAMERA_PERMISSION);
+                return ;
+            }
            manager.openCamera(cameraId, stateCallback, null);
 
         } catch (CameraAccessException e) {
@@ -494,7 +493,6 @@ public class CameraApiActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     private void closeCamera() {
         if (null != cameraDevice) {
             cameraDevice.close();
@@ -505,7 +503,6 @@ public class CameraApiActivity extends AppCompatActivity {
             imageReader = null;
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CAMERA_PERMISSION) {
@@ -516,7 +513,6 @@ public class CameraApiActivity extends AppCompatActivity {
             }
         }
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -545,4 +541,16 @@ public class CameraApiActivity extends AppCompatActivity {
             }
         }, _intime);
     }
+    public Uri getUriFromPath(String path)
+        String fileName= "file:///sdcard/DCIM/Camera/2013_07_07_12345.jpg";
+        Uri fileUri = Uri.parse( fileName );
+        String filePath = fileUri.getPath();
+        Cursor cursor = getContentResolver().query( MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                null, "_data = '" + filePath + "'", null, null );
+        cursor.moveToNext()
+        int id = cursor.getInt( cursor.getColumnIndex( "_id" ) );
+        Uri uri = ContentUris.withAppendedId( MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id );
+        return uri;
+    }
+
 }
