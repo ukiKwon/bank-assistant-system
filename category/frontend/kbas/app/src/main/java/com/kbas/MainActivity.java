@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private LottieAnimationView mAnimationView;
     private TextView mServerData;  //서버와 연결 상태 출력
     private TextView mCustomData;//배정받은 번호와 고객 이름 출력
-
+    private Button mButtonNext;//다음 화면 테스트용 버튼 Todo : 삭제할것
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //mainView;
         mServerData = (TextView) findViewById(R.id.serverview);
         mCustomData = (TextView) findViewById(R.id.customview);
+        mButtonNext = (Button) findViewById(R.id.button_next);
         mAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
         //touch-event
         mAnimationView.setOnTouchListener(new View.OnTouchListener() {
@@ -90,14 +92,23 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP:
                         //camera 이벤트 넘어가기
                         if (CUSTOM_STATE && mVisitedData != null) {
-                            //Intent intent = new Intent(MainActivity.this, RecordMediaActivity.class);
-                            Intent intent = new Intent(MainActivity.this, CameraApiActivity.class);
+                            Intent intent = new Intent(MainActivity.this, CamRecogActivity.class);
                             intent.putExtra("cid", mVisitedData.getCustomId());
                             intent.putExtra("cname", mVisitedData.getCustomName());
                             startActivity(intent);
                         }
                 }
                 return true;
+            }
+        });
+        //Todo : 삭제할 것
+        mButtonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CamRecogActivity.class);
+                //intent.putExtra("cid", mVisitedData.getCustomId());
+                //intent.putExtra("cname", mVisitedData.getCustomName());
+                startActivity(intent);
             }
         });
     }

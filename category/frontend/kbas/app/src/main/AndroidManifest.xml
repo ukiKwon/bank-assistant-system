@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera2"></uses-feature>
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -27,9 +28,7 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RecordMediaActivity" />
-        <activity android:name=".CameraApiActivity"/>
-
+        <activity android:name=".CamRecogActivity"/>
     </application>
 
 </manifest>

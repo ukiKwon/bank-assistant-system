@@ -4,8 +4,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
-      <y>72</y>
+      <x>585</x>
+      <y>45</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>513</x>
-      <y>63</y>
+      <x>585</x>
+      <y>36</y>
       <w>18</w>
       <h>18</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>315</x>
-      <y>36</y>
+      <x>387</x>
+      <y>9</y>
       <w>396</w>
       <h>873</h>
     </coordinates>
@@ -38,8 +38,8 @@ valign=top</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>81</x>
-      <y>567</y>
+      <x>153</x>
+      <y>540</y>
       <w>90</w>
       <h>36</h>
     </coordinates>
@@ -51,8 +51,8 @@ type=sender</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>360</x>
-      <y>189</y>
+      <x>432</x>
+      <y>162</y>
       <w>108</w>
       <h>36</h>
     </coordinates>
@@ -64,8 +64,8 @@ type=receiver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
-      <y>216</y>
+      <x>495</x>
+      <y>189</y>
       <w>63</w>
       <h>90</h>
     </coordinates>
@@ -75,8 +75,8 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>477</x>
-      <y>117</y>
+      <x>549</x>
+      <y>90</y>
       <w>90</w>
       <h>36</h>
     </coordinates>
@@ -87,8 +87,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
-      <y>144</y>
+      <x>585</x>
+      <y>117</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -98,8 +98,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>504</x>
-      <y>189</y>
+      <x>576</x>
+      <y>162</y>
       <w>36</w>
       <h>36</h>
     </coordinates>
@@ -110,8 +110,8 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
-      <y>216</y>
+      <x>585</x>
+      <y>189</y>
       <w>108</w>
       <h>90</h>
     </coordinates>
@@ -122,8 +122,8 @@ type=decision</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>450</x>
-      <y>279</y>
+      <x>522</x>
+      <y>252</y>
       <w>90</w>
       <h>18</h>
     </coordinates>
@@ -137,8 +137,8 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>423</x>
-      <y>324</y>
+      <x>495</x>
+      <y>297</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -149,8 +149,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>279</y>
+      <x>567</x>
+      <y>252</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -160,8 +160,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>351</y>
+      <x>567</x>
+      <y>324</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -171,8 +171,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>486</x>
-      <y>387</y>
+      <x>558</x>
+      <y>360</y>
       <w>36</w>
       <h>36</h>
     </coordinates>
@@ -183,8 +183,8 @@ type=decision</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>432</x>
-      <y>459</y>
+      <x>504</x>
+      <y>432</y>
       <w>153</w>
       <h>36</h>
     </coordinates>
@@ -195,8 +195,8 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>414</y>
+      <x>567</x>
+      <y>387</y>
       <w>108</w>
       <h>63</h>
     </coordinates>
@@ -207,8 +207,8 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>486</y>
+      <x>567</x>
+      <y>459</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -218,8 +218,8 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>486</x>
-      <y>522</y>
+      <x>558</x>
+      <y>495</y>
       <w>36</w>
       <h>36</h>
     </coordinates>
@@ -230,8 +230,8 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>549</y>
+      <x>567</x>
+      <y>522</y>
       <w>171</w>
       <h>63</h>
     </coordinates>
@@ -242,8 +242,8 @@ type=decision</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>441</x>
-      <y>594</y>
+      <x>513</x>
+      <y>567</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -254,8 +254,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>621</y>
+      <x>567</x>
+      <y>594</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -265,8 +265,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>459</x>
-      <y>657</y>
+      <x>531</x>
+      <y>630</y>
       <w>90</w>
       <h>18</h>
     </coordinates>
@@ -280,8 +280,8 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>657</y>
+      <x>540</x>
+      <y>630</y>
       <w>27</w>
       <h>63</h>
     </coordinates>
@@ -291,8 +291,8 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>387</x>
-      <y>702</y>
+      <x>459</x>
+      <y>675</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -303,8 +303,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>729</y>
+      <x>540</x>
+      <y>702</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -314,8 +314,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>531</x>
-      <y>702</y>
+      <x>603</x>
+      <y>675</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -326,8 +326,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
-      <y>657</y>
+      <x>585</x>
+      <y>630</y>
       <w>72</w>
       <h>63</h>
     </coordinates>
@@ -337,8 +337,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSyncBarHorizontal</id>
     <coordinates>
-      <x>477</x>
-      <y>828</y>
+      <x>549</x>
+      <y>801</y>
       <w>90</w>
       <h>18</h>
     </coordinates>
@@ -352,8 +352,8 @@ is passed}</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>405</x>
-      <y>765</y>
+      <x>477</x>
+      <y>738</y>
       <w>90</w>
       <h>36</h>
     </coordinates>
@@ -363,8 +363,8 @@ is passed}</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>558</x>
-      <y>765</y>
+      <x>630</x>
+      <y>738</y>
       <w>90</w>
       <h>36</h>
     </coordinates>
@@ -374,8 +374,8 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>558</x>
-      <y>729</y>
+      <x>630</x>
+      <y>702</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -385,8 +385,8 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>792</y>
+      <x>540</x>
+      <y>765</y>
       <w>54</w>
       <h>63</h>
     </coordinates>
@@ -396,8 +396,8 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>792</y>
+      <x>594</x>
+      <y>765</y>
       <w>63</w>
       <h>63</h>
     </coordinates>
@@ -407,8 +407,8 @@ is passed}</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>828</y>
+      <x>576</x>
+      <y>801</y>
       <w>27</w>
       <h>54</h>
     </coordinates>
@@ -418,8 +418,8 @@ is passed}</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>450</x>
-      <y>864</y>
+      <x>522</x>
+      <y>837</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -430,8 +430,8 @@ bg=red</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>9</x>
-      <y>45</y>
+      <x>81</x>
+      <y>18</y>
       <w>279</w>
       <h>585</h>
     </coordinates>
@@ -442,8 +442,8 @@ valign=top</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>756</x>
-      <y>36</y>
+      <x>828</x>
+      <y>9</y>
       <w>396</w>
       <h>873</h>
     </coordinates>
@@ -454,8 +454,8 @@ valign=top</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>306</x>
-      <y>954</y>
+      <x>378</x>
+      <y>927</y>
       <w>396</w>
       <h>873</h>
     </coordinates>

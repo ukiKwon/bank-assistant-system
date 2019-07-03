@@ -4,8 +4,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>95</x>
-      <y>290</y>
+      <x>155</x>
+      <y>280</y>
       <w>125</w>
       <h>165</h>
     </coordinates>
@@ -17,8 +17,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>105</x>
-      <y>330</y>
+      <x>165</x>
+      <y>320</y>
       <w>85</w>
       <h>110</h>
     </coordinates>
@@ -29,8 +29,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>115</x>
-      <y>370</y>
+      <x>175</x>
+      <y>360</y>
       <w>80</w>
       <h>25</h>
     </coordinates>
@@ -41,8 +41,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>115</x>
-      <y>405</y>
+      <x>175</x>
+      <y>395</y>
       <w>80</w>
       <h>25</h>
     </coordinates>
@@ -53,8 +53,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>335</x>
-      <y>290</y>
+      <x>395</x>
+      <y>280</y>
       <w>430</w>
       <h>430</h>
     </coordinates>
@@ -65,8 +65,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>95</x>
-      <y>505</y>
+      <x>155</x>
+      <y>495</y>
       <w>125</w>
       <h>165</h>
     </coordinates>
@@ -77,8 +77,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>105</x>
-      <y>545</y>
+      <x>165</x>
+      <y>535</y>
       <w>80</w>
       <h>80</h>
     </coordinates>
@@ -89,8 +89,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>115</x>
-      <y>575</y>
+      <x>175</x>
+      <y>565</y>
       <w>80</w>
       <h>20</h>
     </coordinates>
@@ -101,8 +101,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>115</x>
-      <y>600</y>
+      <x>175</x>
+      <y>590</y>
       <w>80</w>
       <h>20</h>
     </coordinates>
@@ -113,8 +113,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>215</x>
-      <y>905</y>
+      <x>275</x>
+      <y>895</y>
       <w>80</w>
       <h>25</h>
     </coordinates>
@@ -125,8 +125,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>90</x>
-      <y>745</y>
+      <x>150</x>
+      <y>735</y>
       <w>250</w>
       <h>190</h>
     </coordinates>
@@ -137,8 +137,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>805</y>
+      <x>310</x>
+      <y>795</y>
       <w>45</w>
       <h>110</h>
     </coordinates>
@@ -149,8 +149,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>160</x>
-      <y>845</y>
+      <x>220</x>
+      <y>835</y>
       <w>80</w>
       <h>20</h>
     </coordinates>
@@ -161,8 +161,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>160</x>
-      <y>870</y>
+      <x>220</x>
+      <y>860</y>
       <w>80</w>
       <h>20</h>
     </coordinates>
@@ -173,8 +173,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>155</x>
-      <y>825</y>
+      <x>215</x>
+      <y>815</y>
       <w>90</w>
       <h>70</h>
     </coordinates>
@@ -185,8 +185,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>245</x>
-      <y>760</y>
+      <x>305</x>
+      <y>750</y>
       <w>85</w>
       <h>35</h>
     </coordinates>
@@ -198,8 +198,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>105</x>
-      <y>785</y>
+      <x>165</x>
+      <y>775</y>
       <w>180</w>
       <h>25</h>
     </coordinates>
@@ -210,8 +210,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>575</x>
-      <y>865</y>
+      <x>635</x>
+      <y>855</y>
       <w>195</w>
       <h>40</h>
     </coordinates>
@@ -224,8 +224,8 @@ Bluetooth</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>575</x>
-      <y>815</y>
+      <x>635</x>
+      <y>805</y>
       <w>195</w>
       <h>40</h>
     </coordinates>
@@ -237,8 +237,8 @@ Component
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>685</x>
-      <y>795</y>
+      <x>745</x>
+      <y>785</y>
       <w>90</w>
       <h>20</h>
     </coordinates>
@@ -249,8 +249,8 @@ Dependecy</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>755</y>
+      <x>750</x>
+      <y>745</y>
       <w>80</w>
       <h>20</h>
     </coordinates>
@@ -261,8 +261,8 @@ Connection</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>555</x>
-      <y>750</y>
+      <x>615</x>
+      <y>740</y>
       <w>220</w>
       <h>165</h>
     </coordinates>
@@ -273,8 +273,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>685</x>
-      <y>775</y>
+      <x>745</x>
+      <y>765</y>
       <w>90</w>
       <h>20</h>
     </coordinates>
@@ -285,8 +285,8 @@ Data Flow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>215</x>
-      <y>165</y>
+      <x>275</x>
+      <y>155</y>
       <w>130</w>
       <h>205</h>
     </coordinates>
@@ -297,8 +297,8 @@ TCP/IP(443)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>215</x>
-      <y>575</y>
+      <x>275</x>
+      <y>565</y>
       <w>130</w>
       <h>20</h>
     </coordinates>
@@ -309,8 +309,8 @@ TCP/IP</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>265</x>
-      <y>580</y>
+      <x>325</x>
+      <y>570</y>
       <w>15</w>
       <h>175</h>
     </coordinates>
@@ -321,8 +321,8 @@ TCP/IP</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>350</x>
-      <y>330</y>
+      <x>410</x>
+      <y>320</y>
       <w>385</w>
       <h>80</h>
     </coordinates>
@@ -333,8 +333,8 @@ Web Browser</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>370</y>
+      <x>420</x>
+      <y>360</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -345,8 +345,8 @@ Web Browser</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>830</x>
-      <y>290</y>
+      <x>890</x>
+      <y>280</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -357,8 +357,8 @@ Web Browser</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>830</x>
-      <y>390</y>
+      <x>890</x>
+      <y>380</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -369,8 +369,8 @@ Web Browser</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>830</x>
-      <y>340</y>
+      <x>890</x>
+      <y>330</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -381,8 +381,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>110</y>
+      <x>420</x>
+      <y>100</y>
       <w>105</w>
       <h>20</h>
     </coordinates>
@@ -393,8 +393,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>350</x>
-      <y>85</y>
+      <x>410</x>
+      <y>75</y>
       <w>125</w>
       <h>155</h>
     </coordinates>
@@ -405,8 +405,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>135</y>
+      <x>420</x>
+      <y>125</y>
       <w>105</w>
       <h>20</h>
     </coordinates>
@@ -418,8 +418,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>160</y>
+      <x>420</x>
+      <y>150</y>
       <w>105</w>
       <h>20</h>
     </coordinates>
@@ -430,8 +430,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>185</y>
+      <x>420</x>
+      <y>175</y>
       <w>105</w>
       <h>20</h>
     </coordinates>
@@ -442,8 +442,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>210</y>
+      <x>420</x>
+      <y>200</y>
       <w>105</w>
       <h>20</h>
     </coordinates>
@@ -454,8 +454,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>525</y>
+      <x>420</x>
+      <y>515</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -466,8 +466,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>350</x>
-      <y>425</y>
+      <x>410</x>
+      <y>415</y>
       <w>120</w>
       <h>155</h>
     </coordinates>
@@ -478,8 +478,8 @@ Google STT API</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>500</y>
+      <x>420</x>
+      <y>490</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -490,8 +490,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>475</y>
+      <x>420</x>
+      <y>465</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -502,8 +502,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>450</y>
+      <x>420</x>
+      <y>440</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -514,8 +514,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>625</x>
-      <y>525</y>
+      <x>685</x>
+      <y>515</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -527,8 +527,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>625</x>
-      <y>500</y>
+      <x>685</x>
+      <y>490</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -540,8 +540,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>625</x>
-      <y>475</y>
+      <x>685</x>
+      <y>465</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -553,8 +553,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>625</x>
-      <y>450</y>
+      <x>685</x>
+      <y>440</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -566,8 +566,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>615</x>
-      <y>425</y>
+      <x>675</x>
+      <y>415</y>
       <w>120</w>
       <h>155</h>
     </coordinates>
@@ -578,8 +578,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>465</x>
-      <y>370</y>
+      <x>525</x>
+      <y>360</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -590,8 +590,8 @@ Kaggle 분류 분석</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>755</x>
-      <y>355</y>
+      <x>815</x>
+      <y>345</y>
       <w>85</w>
       <h>20</h>
     </coordinates>
@@ -602,8 +602,8 @@ Dependecy</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>360</y>
+      <x>850</x>
+      <y>350</y>
       <w>50</w>
       <h>60</h>
     </coordinates>
@@ -613,8 +613,8 @@ Dependecy</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>305</y>
+      <x>850</x>
+      <y>295</y>
       <w>50</w>
       <h>70</h>
     </coordinates>
@@ -624,8 +624,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>335</x>
-      <y>50</y>
+      <x>395</x>
+      <y>40</y>
       <w>440</w>
       <h>205</h>
     </coordinates>
@@ -636,8 +636,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>630</x>
-      <y>85</y>
+      <x>690</x>
+      <y>75</y>
       <w>125</w>
       <h>155</h>
     </coordinates>
@@ -648,8 +648,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>635</x>
-      <y>125</y>
+      <x>695</x>
+      <y>115</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -661,8 +661,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>635</x>
-      <y>175</y>
+      <x>695</x>
+      <y>165</y>
       <w>200</w>
       <h>25</h>
     </coordinates>
@@ -673,8 +673,8 @@ Dependecy</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>140</y>
+      <x>890</x>
+      <y>130</y>
       <w>35</w>
       <h>55</h>
     </coordinates>
@@ -685,8 +685,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>635</x>
-      <y>210</y>
+      <x>695</x>
+      <y>200</y>
       <w>200</w>
       <h>20</h>
     </coordinates>
@@ -697,8 +697,8 @@ Dependecy</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>830</x>
-      <y>565</y>
+      <x>890</x>
+      <y>555</y>
       <w>260</w>
       <h>255</h>
     </coordinates>
@@ -738,8 +738,8 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>155</y>
+      <x>530</x>
+      <y>145</y>
       <w>170</w>
       <h>20</h>
     </coordinates>
@@ -750,8 +750,8 @@ bg=yellow
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>480</x>
-      <y>425</y>
+      <x>540</x>
+      <y>415</y>
       <w>120</w>
       <h>60</h>
     </coordinates>
@@ -763,8 +763,8 @@ bg=yellow
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>490</x>
-      <y>450</y>
+      <x>550</x>
+      <y>440</y>
       <w>100</w>
       <h>20</h>
     </coordinates>
@@ -775,8 +775,8 @@ bg=yellow
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>830</x>
-      <y>440</y>
+      <x>890</x>
+      <y>430</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -787,8 +787,8 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>405</y>
+      <x>850</x>
+      <y>395</y>
       <w>50</w>
       <h>65</h>
     </coordinates>
@@ -798,21 +798,21 @@ bg=yellow
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>890</x>
-      <y>25</y>
+      <x>950</x>
+      <y>15</y>
       <w>210</w>
       <h>155</h>
     </coordinates>
     <panel_attributes>- Database : kbas
 - pwd : kbas
 
-Table 구성 
+&lt;&lt; Table 구성 &gt;&gt; 
 [lastFinService] : 지난 금융 이력
 - 고객 식별자(cid) : Varchar(255)
 - 지난 금융 서비스 식별자(finid) : Varchar(255) FOREIGNKEY
 
 [fineService] : 금융 서비스 종류
-- 금융 서비스(finid) : Varchar(255) PRIMARY KEY
+- 금융 서비스(finid) : Varchar(255)
 - 서비스 이름(fname) : Varchar(255)
 
 [frontState] : 창구 상태
@@ -820,15 +820,15 @@ Table 구성
 - 창구 상태(isbusy)
 - 창구 고객 수(numofcustom)
 - 창구 예상 대기 시간(expectedwaittime)
-
+- 창구 대기 고객 (waitcustomlist)
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>830</x>
-      <y>490</y>
+      <x>890</x>
+      <y>480</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -839,8 +839,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>455</y>
+      <x>850</x>
+      <y>445</y>
       <w>50</w>
       <h>65</h>
     </coordinates>
@@ -850,8 +850,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>620</y>
+      <x>420</x>
+      <y>610</y>
       <w>115</w>
       <h>35</h>
     </coordinates>
@@ -862,8 +862,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>495</x>
-      <y>620</y>
+      <x>555</x>
+      <y>610</y>
       <w>115</w>
       <h>35</h>
     </coordinates>
@@ -874,8 +874,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>345</x>
-      <y>595</y>
+      <x>405</x>
+      <y>585</y>
       <w>395</w>
       <h>120</h>
     </coordinates>
