@@ -1,6 +1,6 @@
-package com.kbas;
+package com.kbas.Model;
 
-class FaceInfo extends BaseModel{
+class FaceInfo extends BaseModel {
     private final int EMO_NUM = 8;
     //todo : 순서 있을듯
     private float[] emotionsChange = new float[EMO_NUM];//emotions

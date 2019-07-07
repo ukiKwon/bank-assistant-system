@@ -1,4 +1,4 @@
-package com.kbas;
+package com.kbas.Model;
 
 public class VisitedData extends BaseModel {
     private String custom_id;//고객 식별자

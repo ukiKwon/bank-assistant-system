@@ -1,4 +1,4 @@
-package com.kbas;
+package com.kbas.Model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kbas">
+    <!-- Communication -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Visualization Reconition -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera2"></uses-feature>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <!-- Voice Recognition -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- BlueTooth-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -28,7 +33,7 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".CamRecogActivity"/>
+        <activity android:name=".LiveRecogActivity"/>
     </application>
 
 </manifest>

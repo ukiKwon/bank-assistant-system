@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.kbas.Model.VisitedData;
 
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private final String DELIMETER = ":";
     private boolean SERVER_STATE = false;
     private boolean CUSTOM_STATE = false;
-    private com.kbas.VisitedData mVisitedData;
+    private VisitedData mVisitedData;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 00001;
     private final int MY_PERMISSIONS_REQUEST_VOICE = 00002;
     private final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 00003;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CamRecogActivity.class);
+                Intent intent = new Intent(MainActivity.this, LiveRecogActivity.class);
                 //intent.putExtra("cid", mVisitedData.getCustomId());
                 //intent.putExtra("cname", mVisitedData.getCustomName());
                 startActivity(intent);
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 if (res.length >= 2) {
                     System.out.println("id : " + res[0].substring(1));
                     System.out.println("name : " + res[1].substring(0, res[1].length() - 1));
-                    mVisitedData = new com.kbas.VisitedData(res[0], res[1]);
+                    mVisitedData = new VisitedData(res[0], res[1]);
                     result = res[1].substring(0, res[1].length() - 1);
                 }
             }

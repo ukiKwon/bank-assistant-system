@@ -1,9 +1,9 @@
-package com.kbas;
+package com.kbas.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class VoiceUnit {
+public class VoiceUnit extends BaseModel{
     private VoiceInfo.SPEAKER speaker;
     private final int MAX_SENTENCE = 10;
     private Date starTime, endTime;

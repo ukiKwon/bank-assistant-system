@@ -1,4 +1,4 @@
-package com.kbas;
+package com.kbas.Model;
 
 public class  BaseModel{
     protected String id;
