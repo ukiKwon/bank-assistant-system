@@ -50,7 +50,7 @@ public class FaceGraphic extends Graphic {
 
     public FaceGraphic(GraphicOverlay overlay, FirebaseVisionFace face, int facing, Bitmap overlayBitmap) {
         super(overlay);
-
+        //todo : 표시되는 페인트 굵기 줄일 것
         firebaseVisionFace = face;
         this.facing = facing;
         this.overlayBitmap = overlayBitmap;

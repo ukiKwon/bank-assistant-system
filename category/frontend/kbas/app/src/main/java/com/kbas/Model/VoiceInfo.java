@@ -6,7 +6,7 @@ import java.util.List;
 
 class VoiceInfo extends BaseModel{
     public enum SPEAKER {
-        CUSTOM(0), BANKER(1), OUTSIDE(2);
+        CUSTOM(0), BANKER(1), NOISE(2);
         int sid;
         SPEAKER(int sid) {
             this.sid = sid;
@@ -18,6 +18,7 @@ class VoiceInfo extends BaseModel{
     private List <VoiceUnit> voiceUnits = new ArrayList<>();
     public VoiceInfo(){;}
     public VoiceInfo(VoiceUnit voiceUnit) { voiceUnits.add(voiceUnit);}
+    public void addVoiceUnit(VoiceUnit voiceunit) { voiceUnits.add(voiceunit);}
     public void addVoicUnits(List <VoiceUnit> voiceUnits) { this.voiceUnits.addAll(voiceUnits); }
     public List <VoiceUnit> getVoiceUnits() { return this.voiceUnits;}
     //todo : SPEARKER 별로 객체 구성? 고려 해볼것. 일단은 find로 찾아낼 거임.

@@ -156,7 +156,8 @@ int main(int argc, char** argv)
         if (image.empty())
             break;
 
-        update_mhi(image, motion, 30);
+        // update_mhi(image, motion, 30);
+        update_mhi(image, motion, 120);
         imshow("Image", image);
         imshow("Motion", motion);
 

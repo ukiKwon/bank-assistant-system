@@ -1,9 +1,0 @@
-1. lbpcascades
-  (1) lbpcascade_frontalface : 두상까지 캐치
-  (2) lbpcascade_frontalface_improved : 이목구비 영역까지 캐치
-  (3) lbpcascade_profileface : 오른쪽으로 회전한 얼굴을 탐지한다는 데 잘 안됨
-
-2. haarcascades
-  2.1 Eye
-    (1) eye_tree_eyeglasses :
-  2.2 face

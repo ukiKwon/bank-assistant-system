@@ -5,9 +5,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -16,6 +16,7 @@ import com.kbas.FaceUtils.FaceDetectionProcessor;
 import com.kbas.FaceUtils.common.CameraSource;
 import com.kbas.FaceUtils.common.CameraSourcePreview;
 import com.kbas.FaceUtils.common.GraphicOverlay;
+import com.kbas.Model.VisitedData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class LiveRecogActivity extends AppCompatActivity
     private static final String FACE_DETECTION = "Face Detection";
     //view
     private String selectedModel = FACE_DETECTION;
+    private VisitedData mVisitedData = null;
     //camera
     private CameraSource cameraSource = null;
     private CameraSourcePreview preview;
@@ -42,7 +44,7 @@ public class LiveRecogActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_live);
+        setContentView(R.layout.activity_live2);
         setViewConfig();
     }
     public void setViewConfig() {
@@ -211,5 +213,15 @@ public class LiveRecogActivity extends AppCompatActivity
         }
         Log.i(TAG, "Permission NOT granted: " + permission);
         return false;
+    }
+    public void setTextInTime(final String msg, long _intime) {
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                //mTextView.setText(msg);
+            }
+        }, _intime);
     }
 }

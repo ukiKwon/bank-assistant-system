@@ -72,7 +72,7 @@ public class FaceContourGraphic extends Graphic {
       float py = translateY(point.getY());
       canvas.drawCircle(px, py, FACE_POSITION_RADIUS, facePositionPaint);
     }
-
+    //Todo : Emotion Value Here
     if (face.getSmilingProbability() >= 0) {
       canvas.drawText(
           "happiness: " + String.format("%.2f", face.getSmilingProbability()),
