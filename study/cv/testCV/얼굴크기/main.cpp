@@ -250,9 +250,9 @@ void fileProcess(float _x_var, float _y_var)
     ss << file_name << "_"<<  findex++ << ".md";
     ofstream each_history;
     each_history.open(ss.str());
-    for (vector <pType>::iterator it = headXYhistory.begin();
-    it != headXYhistory.end(); ++it) {
-      each_history << it->first << ' ' << it->second << endl;
+    for (uint i = 0; i != headXYhistory.size(); ++i) {
+      pType element = headXYhistory[i];
+        each_history << '[' << element.first << ", " << element.second << "],\n";
     }
     each_history.close();
 
