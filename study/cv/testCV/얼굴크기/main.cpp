@@ -11,7 +11,12 @@
 
 //c++
 #include <iostream>
+#include <fstream>
 #include <vector>
+#include <algorithm>
+#include <cmath>
+#include <sstream>
+#include <cstring>
 
 using namespace std;
 using namespace cv;
@@ -22,13 +27,25 @@ void detectFaces(Mat&, vector<Rect_<int> >&);
 void detectEyes(Mat&, vector<Rect_<int> >&);
 void drawFaceNEyes(Mat& img, const vector<Rect_<int> > faces);
 void drawFaceLandmark(Mat& frame);
-void calDiffOfHead(vector<Rect_<int>&);
+
 //cascade
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 //FaceLandmark
 Ptr<Facemark> facemark = FacemarkLBF::create();// Create an instance of Facemark
-
+//Head Change
+const float threshold_head = 0.5;
+typedef pair <float, float > pType;
+pType headChange;
+vector <pType> headXYhistory;
+vector <int> occuredHeadChange;
+float total_x, total_y;
+void addHeadChange(vector<Rect_<int> >&face);
+void calDiffOfHead();
+bool sortingByY(pType& a, pType& b);
+void clearData();
+void fileProcess(float _x_var, float _y_var);
+void drawCanvasPoint();
 int main(int argc, char** argv)
 {
       //detection
@@ -51,6 +68,7 @@ int main(int argc, char** argv)
       Mat frame;
       while (cap.read(frame)) {
           vector<Rect_<int> > faces;
+          static int stage = 0;
           // display output
           switch (display_mode)
           {
@@ -58,7 +76,7 @@ int main(int argc, char** argv)
                   //Part1. 얼굴 찾고 얼굴 안에서 눈 찾고 사각 처리{Detect faces and facial features}
                   detectFaces(frame, faces);
                   drawFaceNEyes(frame, faces);
-                  calDiffOfHead(faces);
+                  addHeadChange(faces);
                   imshow("Result", frame);
                   break;
               case 1: //mask
@@ -74,9 +92,15 @@ int main(int argc, char** argv)
               cap.release();
               break;
           }
-          else if( c == ' ' )
-              display_mode = (display_mode + 1) % 2;
+          else if( c == ' ' ) {
+              //display_mode = (display_mode + 1) % 1;
+              //HeadChange
+              cout << "\n\n #### [ Stage " << ++stage << " ] start #### \n";
+              calDiffOfHead();
+              cout << "#### [ Stage " << stage << " ] end #### \n";
+          }
       }
+      //drawCanvasPoint();
       return 0;
 }
 void drawFaceNEyes(Mat& img, const vector<Rect_<int> >faces)
@@ -152,8 +176,108 @@ void drawFaceLandmark(Mat& frame)
   }
 }
 //아직까지는 Head 정보 출력
-void calDiffOfHead(vector<Rect_<int>& face)
+/*
+  const float threshold_head = 0.5;
+  typedef pair <float, float > pType;
+  pType headChange = 0;
+  vector <int> occuredHeadChange;
+  vector <pType> headXYhistory;
+  vector <float> headChangehistory;
+*/
+void addHeadChange(vector<Rect_<int> > &face)
 {
-    //현재 head 정보
-    //
+    /* 현재 head 정보 */
+    const int i = 0;
+    float curHead = 0, newHead = 0;
+    // if (i != 0) {
+    //     curHead = headChange.first * headChange.y;
+          //cout << ">> head size : " << curHead << endl;
+    // }
+    // float total_x = 0,
+    //       total_y = 0;
+    //get head
+    for (uint i = 0; i < face.size(); ++i) {
+        Rect f = face[i];
+        total_x += f.x;
+        total_y += f.y;
+        headXYhistory.push_back(make_pair(f.x, f.y));
+    }
+    //한시적으로 여기에 넣어둠.
+    // headChangehistory[0] = make_pair(total_x, total_y);
+}
+void calDiffOfHead()
+{
+    cout << " >> Working on calDiffOfHead...." << endl;
+    //setting variables;
+    // float total_x = headChangehistory[0].first,
+    //       total_y = headChangehistory[0].second;
+    /* head 변화율 계산 */
+    //표준 편차 계산
+    //cal head
+    //1. headChange
+    uint total_n = headXYhistory.size();
+    cout << " >> sample : " << total_n << endl;
+    float mean_x = total_x / total_n,
+        mean_y = total_y / total_n;
+    //get variance
+    float x_variance = 0,
+            y_variance = 0;
+    for (uint i = 0; i < headXYhistory.size(); ++i) {
+        pType e = headXYhistory[i];
+        x_variance += pow(e.first - mean_x, 2);
+        y_variance += pow(e.second - mean_y, 2);
+    }
+    x_variance = sqrt(x_variance / total_n);
+    y_variance = sqrt(y_variance / total_n);
+    cout << " >> x_variance : " << x_variance << endl;
+    cout << " >> y_variance : " << y_variance << endl;
+    fileProcess(x_variance, y_variance);
+}
+void clearData()
+{
+    total_x = 0;
+    total_y = 0;
+    headXYhistory.clear();
+}
+void fileProcess(float _x_var, float _y_var)
+{
+    static int findex = 0;
+    //헤드 위치 좌표 각 계산
+    cout << "\n >> File Processing now ..." << endl;
+    cout << "> Each file is added !!!" << endl;
+    const String file_name ="eachHeadXYChange";
+    stringstream ss;
+    ss << file_name << "_"<<  findex++ << ".md";
+    ofstream each_history;
+    each_history.open(ss.str());
+    for (vector <pType>::iterator it = headXYhistory.begin();
+    it != headXYhistory.end(); ++it) {
+      each_history << it->first << ' ' << it->second << endl;
+    }
+    each_history.close();
+
+      //전체 표준편차 계산
+    cout << "> file element added !!!" << endl;
+    ofstream result_history;
+    result_history.open("headchange.md", ios::out | ios_base::app);
+    if (result_history.fail())
+        throw std::ios_base::failure(std::strerror(errno));
+    result_history << headXYhistory.size() << ' ' << _x_var << ' ' << _y_var << endl;
+    result_history.close();
+    clearData();
+    return;
+}
+bool sortingByY(pType& a, pType& b) { return a.second > b.second;}
+void drawCanvasPoint() {
+    //sorting by largest Y-dimension
+    sort(headXYhistory.begin(), headXYhistory.end(), sortingByY);
+
+    char ptag = '.';
+    //print them
+    cout << "|";
+    for (vector<pType>::iterator it = headXYhistory.begin();
+      it != headXYhistory.end(); ++it)
+      {
+          float top = it->second;
+      }
 }
